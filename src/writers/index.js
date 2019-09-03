@@ -1,4 +1,5 @@
 export { default as Writer } from './writer'
-export { default as ViewWriter } from './view-writer'
+export { default as ReactViewWriter } from './react-view-writer'
+export { default as ReactNativeViewWriter } from './react-native-view-writer'
 export { default as ScriptWriter } from './script-writer'
 export { default as StyleWriter } from './style-writer'

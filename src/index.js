@@ -3,7 +3,7 @@ import path from 'path'
 import git from './git'
 import { fs, ncp, reread } from './libs'
 import { encapsulateCSS } from './utils'
-import { ViewWriter, ScriptWriter, StyleWriter } from './writers'
+import { ReactViewWriter, ScriptWriter, StyleWriter } from './writers'
 
 export const transpile = async config => {
   let inputFiles
@@ -45,7 +45,7 @@ export const transpile = async config => {
   const writingFiles = await Promise.all(transpilingHTMLFiles).then(
     async viewWriters => {
       return await Promise.all([
-        ViewWriter.writeAll(
+        ReactViewWriter.writeAll(
           viewWriters,
           `${config.output}/src/views/`,
           `${config.output}/src/controllers/`
@@ -84,7 +84,7 @@ const transpileHTMLFile = async (
   const $head = $('head')
   const $body = $('body')
 
-  const viewWriter = new ViewWriter({
+  const viewWriter = new ReactViewWriter({
     name: htmlFile
       .split('.')
       .slice(0, -1)

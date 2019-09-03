@@ -17,4 +17,17 @@ describe('Testing Webflow Transformations...', () => {
       })
     })
   })
+  describe('Webflow -> React Native tests...', () => {
+    it('should put input in the output', async () => {
+      await transpile({
+        input: 'test/data/input0',
+        output: 'test/data/output1',
+        git: false
+      })
+
+      recursive('test/data/output1', (err, files) => {
+        assert.equal(files.length, 44)
+      })
+    })
+  })
 })
